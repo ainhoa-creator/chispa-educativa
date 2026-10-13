@@ -161,7 +161,6 @@ main {
 }
 .tarjeta:nth-child(2) .ilustracion { transform: rotate(5deg); }
 .tarjeta:nth-child(3) .ilustracion { transform: rotate(-4deg); }
-
 .tarjeta h3 {
   margin: 0 0 12px;
   color: var(--azul-oscuro);
@@ -299,7 +298,6 @@ footer p { margin: 0; }
 }
 .ojo.izquierda { left: 45px; }
 .ojo.derecha { right: 45px; }
-
 .meji {
   position: absolute;
   top: 91px;
@@ -312,53 +310,53 @@ footer p { margin: 0; }
 .meji.izquierda { left: 17px; }
 .meji.derecha { right: 17px; }
 
-/* BOCA CORREGIDA: nariz centrada y sonrisa simétrica */
+/* HOCICO Y BOCA NUEVOS */
 .hocico {
   position: absolute;
-  top: 94px;
+  top: 91px;
   left: 50%;
   transform: translateX(-50%);
-  width: 36px;
-  height: 27px;
+  width: 42px;
+  height: 32px;
   border-radius: 50%;
-  background: #fff4e6;
+  background: #fff7ec;
 }
 .nariz {
   position: absolute;
   left: 50%;
   top: 3px;
   transform: translateX(-50%);
-  width: 12px;
+  width: 13px;
   height: 9px;
-  border-radius: 45% 45% 55% 55%;
-  background: #df9297;
+  border-radius: 50% 50% 60% 60%;
+  background: #e88f9b;
 }
 .boca {
   position: absolute;
-  left: 50%;
   top: 10px;
-  transform: translateX(-50%);
+  left: 50%;
   width: 2px;
-  height: 6px;
-  background: #916b57;
+  height: 7px;
+  background: #89634f;
+  transform: translateX(-50%);
 }
 .sonrisa {
   position: absolute;
-  left: 5px;
-  top: 13px;
+  top: 15px;
+  left: 8px;
   width: 12px;
   height: 7px;
-  border-bottom: 2px solid #916b57;
+  border-bottom: 2px solid #89634f;
   border-radius: 0 0 70% 70%;
 }
 .sonrisa::after {
   content: "";
   position: absolute;
-  left: 12px;
   top: 0;
+  left: 12px;
   width: 12px;
   height: 7px;
-  border-bottom: 2px solid #916b57;
+  border-bottom: 2px solid #89634f;
   border-radius: 0 0 70% 70%;
 }
 
@@ -374,7 +372,6 @@ footer p { margin: 0; }
 }
 .patita.izquierda { left: 38px; transform: rotate(-9deg); }
 .patita.derecha { right: 38px; transform: rotate(9deg); }
-
 .bolita-cerrar {
   position: absolute;
   top: 0;
@@ -429,12 +426,10 @@ footer p { margin: 0; }
   <span class="estrella uno">✦</span>
   <span class="estrella dos">★</span>
   <span class="estrella tres">✧</span>
-
   <div class="marca">
     <h1>Chispa <span class="educativa">Educativa</span></h1>
   </div>
   <p class="eslogan">¡Enciende tu chispa y aprende jugando!</p>
-
   <svg class="onda" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0,42 C180,100 270,0 460,45 S780,92 970,42 S1240,0 1440,43 L1440,100 L0,100Z" fill="#d9efff" opacity=".85"/>
     <path d="M0,65 C210,15 330,100 520,55 S860,20 1050,65 S1280,100 1440,48 L1440,100 L0,100Z" fill="#f7fbff"/>
@@ -485,7 +480,6 @@ footer p { margin: 0; }
 
 <aside class="bolita" id="bolita" aria-label="Bolita, tu compañera de aprendizaje">
   <button class="bolita-cerrar" id="cerrarBolita" aria-label="Ocultar a Bolita">×</button>
-
   <div class="bolita-mensaje" id="mensajeBolita" aria-live="polite">
     <strong>¡Hola! Soy Bolita 💛</strong>
     ¿Qué te gustaría descubrir hoy?
@@ -530,18 +524,15 @@ function cambiarMensajeBolita() {
 }
 
 document.getElementById("coneja").addEventListener("click", cambiarMensajeBolita);
-
 document.getElementById("coneja").addEventListener("keydown", function(event) {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
     cambiarMensajeBolita();
   }
 });
-
 document.getElementById("cerrarBolita").addEventListener("click", function() {
   document.getElementById("bolita").hidden = true;
 });
 </script>
-
 </body>
 </html>
