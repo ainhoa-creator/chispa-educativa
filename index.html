@@ -6,372 +6,541 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chispa Educativa</title>
 <meta name="description" content="¡Enciende tu chispa y aprende jugando!">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --azul: #2864a8;
-  --azul-oscuro: #194b83;
-  --azul-claro: #edf5ff;
-  --texto: #30445c;
-  --naranja: #f5a45b;
+  --azul: #0878d1;
+  --azul-oscuro: #064b9b;
+  --azul-claro: #e9f5ff;
+  --texto: #4d6688;
+  --naranja: #ffad35;
+  --lila: #d9b7fa;
+  --rosa: #ffcfdf;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: 'Nunito', sans-serif;
-  background: #f8fbff;
   color: var(--texto);
-  line-height: 1.7;
+  background: #f7fbff;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.55;
 }
-header {
-  background: var(--azul);
-  color: white;
-  text-align: center;
-  padding: 42px 20px 38px;
-  overflow: hidden;
-}
-header h1 {
-  display: inline-block;
-  margin: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 600;
-  animation: chispa 2.4s ease-in-out infinite;
-}
-header p { margin: 12px 0 0; color: #edf5ff; font-size: 1.1rem; }
-@keyframes chispa {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-7px); }
-}
-main { width: min(100% - 36px, 1000px); margin: 42px auto; }
-.presentacion { max-width: 760px; margin: 0 auto 38px; text-align: center; }
-h2,h3 { font-family: 'Fredoka', sans-serif; font-weight: 500; }
-.presentacion h2 { color: var(--azul); font-size: clamp(1.7rem,4vw,2.1rem); margin: 0 0 14px; }
-.presentacion p { font-size: 1.05rem; margin: 10px 0; }
-.frase { color: var(--azul); font-weight: 800; margin-top: 18px !important; }
 
-.tarjetas { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
-.tarjeta {
-  background: white;
-  border: 1px solid #e2eaf5;
-  border-top: 5px solid var(--azul);
-  border-radius: 15px;
-  padding: 24px 21px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-shadow: 0 4px 14px #25507d0d;
-  transition: transform .2s, box-shadow .2s;
-}
-.tarjeta:nth-child(1) { border-top-color: var(--naranja); }
-.tarjeta:nth-child(2) { border-top-color: #b9a0e8; }
-.tarjeta:nth-child(3) { border-top-color: #e9a9c6; }
-.tarjeta:hover { transform: translateY(-4px); box-shadow: 0 8px 20px #25507d17; }
-.icono { font-size: 2rem; margin-bottom: 8px; }
-.tarjeta h3 { color: var(--azul); font-size: 1.3rem; line-height: 1.3; margin: 0 0 10px; }
-.tarjeta p { margin: 0 0 22px; font-size: .98rem; }
-.boton {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background: var(--azul);
-  color: white;
-  text-decoration: none;
+/* ENCABEZADO AZUL CON ONDAS */
+.cabecera {
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+  padding: 38px 18px 52px;
   text-align: center;
-  border-radius: 9px;
+  color: white;
+  background:
+    radial-gradient(ellipse at 15% 10%, #8bd1ff 0%, transparent 34%),
+    radial-gradient(ellipse at 85% 80%, #4b9ce9 0%, transparent 42%),
+    linear-gradient(135deg, #54b5f7, #1674d0);
+}
+.onda {
+  position: absolute;
+  inset: auto -5% -1px;
+  width: 110%;
+  height: 75px;
+  pointer-events: none;
+}
+.marca {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 4px 20px;
+  color: var(--azul-oscuro);
+  background: #ffffffeb;
+  border: 5px solid #fff;
+  border-radius: 28px;
+  box-shadow: 0 7px 0 #ffffff35;
+  transform: rotate(-1deg);
+}
+.marca h1 {
+  margin: 0;
+  font: 700 clamp(2.3rem, 6vw, 4.5rem)/1.1 'Fredoka', sans-serif;
+  letter-spacing: -1.5px;
+}
+.marca .educativa {
+  color: #ff9c35;
+}
+.eslogan {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 14px 0 0;
+  padding: 7px 22px;
+  border-radius: 25px;
+  background: #ffffffd9;
+  color: var(--azul-oscuro);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
   font-weight: 800;
 }
-.tarjeta:nth-child(1) .boton { background: #e88a35; }
-.tarjeta:nth-child(2) .boton { background: #8765bd; }
-.tarjeta:nth-child(3) .boton { background: #cf6795; }
-.boton:hover { background: var(--azul-oscuro); }
-footer {
+.estrella {
+  position: absolute;
+  z-index: 1;
+  color: #ffbd45;
+  font-size: 2.6rem;
+  text-shadow: 0 3px 0 #fff;
+}
+.estrella.uno { left: 15%; top: 32px; }
+.estrella.dos { right: 16%; top: 45px; }
+.estrella.tres { right: 24%; top: 125px; font-size: 1.7rem; }
+
+/* CONTENIDO */
+main {
+  width: min(1360px, calc(100% - 42px));
+  margin: 30px auto 0;
+  position: relative;
+}
+.presentacion {
+  max-width: 900px;
+  margin: 0 auto 24px;
   text-align: center;
-  padding: 22px 16px;
-  background: var(--azul-claro);
-  color: var(--azul);
-  margin-top: 48px;
+}
+.presentacion h2 {
+  color: var(--azul-oscuro);
+  font: 600 clamp(2rem, 4vw, 2.8rem)/1.2 'Fredoka', sans-serif;
+  margin: 0 0 16px;
+}
+.rayita {
+  width: 100px;
+  height: 6px;
+  margin: -7px auto 15px;
+  border-radius: 10px;
+  background: #83caff;
+}
+.presentacion p {
+  margin: 8px auto;
+  max-width: 880px;
+  font-size: clamp(.98rem, 2vw, 1.2rem);
+}
+.frase {
+  display: inline-block;
+  margin-top: 8px !important;
+  padding: 7px 22px;
+  border-radius: 30px;
+  background: #d8eaff;
+  color: #0866dd;
+  font-weight: 800;
 }
 
-/* BOLITA: conejita dibujada solo con CSS */
+/* TARJETAS */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.tarjeta {
+  min-width: 0;
+  min-height: 275px;
+  padding: 23px 20px 20px;
+  border-radius: 27px;
+  display: grid;
+  grid-template-columns: 43% 57%;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 7px 18px #284c7314;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px #284c7320;
+}
+.tarjeta.naranja { background: linear-gradient(135deg, #fff0d9, #fff5e8); }
+.tarjeta.lila { background: linear-gradient(135deg, #f1e6ff, #f6edff); }
+.tarjeta.rosa { background: linear-gradient(135deg, #ffe2eb, #fff0f5); }
+
+.ilustracion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  font-size: clamp(4rem, 7vw, 7rem);
+  filter: drop-shadow(0 7px 3px #5e729522);
+  transform: rotate(-5deg);
+}
+.tarjeta:nth-child(2) .ilustracion { transform: rotate(5deg); }
+.tarjeta:nth-child(3) .ilustracion { transform: rotate(-4deg); }
+
+.tarjeta h3 {
+  margin: 0 0 12px;
+  color: var(--azul-oscuro);
+  font: 600 clamp(1.25rem, 2.2vw, 2rem)/1.08 'Fredoka', sans-serif;
+}
+.tarjeta p {
+  margin: 0 0 18px;
+  font-size: clamp(.88rem, 1.2vw, 1.02rem);
+}
+.boton {
+  display: block;
+  padding: 12px 10px;
+  border-radius: 30px;
+  color: white;
+  font-size: clamp(.83rem, 1.2vw, 1.03rem);
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 5px 10px #30445c12;
+  transition: transform .2s, filter .2s;
+}
+.boton:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.naranja .boton { background: linear-gradient(90deg, #ff641a, #ff510d); }
+.lila .boton { background: linear-gradient(90deg, #b16cde, #9856ca); }
+.rosa .boton { background: linear-gradient(90deg, #f53882, #f51d70); }
+
+/* PIE DE PÁGINA */
+footer {
+  position: relative;
+  overflow: hidden;
+  margin-top: 45px;
+  padding: 45px 20px 55px;
+  text-align: center;
+  color: var(--azul-oscuro);
+  background:
+    radial-gradient(ellipse at 20% 20%, #d7edff, transparent 55%),
+    linear-gradient(#d3eaff, #b6ddff);
+  font-weight: 800;
+}
+footer p { margin: 0; }
+
+/* BOLITA */
 .bolita {
   position: fixed;
-  right: 18px;
-  bottom: -8px;
-  z-index: 1000;
-  width: 180px;
+  z-index: 10;
+  right: 8px;
+  bottom: -5px;
+  width: 225px;
   text-align: center;
-  font-family: 'Nunito', sans-serif;
-  animation: bolita-asoma 1s ease-out both;
+  animation: aparece 1s ease-out both;
 }
-@keyframes bolita-asoma {
-  from { transform: translateY(150px); }
+@keyframes aparece {
+  from { transform: translateY(180px); }
   to { transform: translateY(0); }
 }
-.bolita-bocadillo {
+.bolita-mensaje {
   position: relative;
-  margin: 0 0 12px;
-  padding: 12px 15px;
-  background: white;
-  color: #30445c;
-  border: 2px solid #e8d8c8;
-  border-radius: 20px;
-  box-shadow: 0 5px 18px #30445c20;
-  font-size: 13px;
+  z-index: 3;
+  margin: 0 0 -3px;
+  padding: 14px 16px;
+  border: 3px solid #d9eaff;
+  border-radius: 50% 50% 42% 42%;
+  background: #fff;
+  color: #0754a6;
   font-weight: 800;
-  line-height: 1.4;
+  font-size: 15px;
+  line-height: 1.35;
+  box-shadow: 0 5px 16px #235c9b20;
 }
-.bolita-bocadillo::after {
+.bolita-mensaje strong {
+  display: block;
+  font-size: 1.15rem;
+  margin-bottom: 5px;
+}
+.bolita-mensaje::after {
   content: "";
   position: absolute;
   bottom: -9px;
-  right: 34px;
-  width: 15px;
-  height: 15px;
+  right: 35px;
+  width: 16px;
+  height: 16px;
   background: white;
-  border-right: 2px solid #e8d8c8;
-  border-bottom: 2px solid #e8d8c8;
+  border-right: 3px solid #d9eaff;
+  border-bottom: 3px solid #d9eaff;
   transform: rotate(45deg);
 }
-.bolita-coneja {
+
+/* Conejita de CSS */
+.bolita-dibujo {
   position: relative;
-  width: 150px;
-  height: 150px;
-  margin: auto;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
   cursor: pointer;
-  filter: drop-shadow(0 5px 5px #604b3920);
-  animation: bolita-respira 3s ease-in-out infinite;
+  animation: respira 3s ease-in-out infinite;
 }
-.bolita-oreja {
-  position: absolute;
-  top: -12px;
-  width: 39px;
-  height: 101px;
-  border-radius: 60% 60% 45% 45%;
-  background: linear-gradient(90deg,#d8c2a8,#f5e8d7 48%,#dfc8af);
-  transform-origin: bottom center;
-}
-.bolita-oreja::after {
-  content: "";
-  position: absolute;
-  inset: 14px 10px 15px;
-  border-radius: inherit;
-  background: linear-gradient(#efb9c5,#f7d6dc);
-}
-.bolita-oreja.izquierda { left: 34px; transform: rotate(-19deg); }
-.bolita-oreja.derecha { right: 34px; transform: rotate(17deg); }
-
-.bolita-cabeza {
-  position: absolute;
-  width: 128px;
-  height: 116px;
-  left: 11px;
-  top: 34px;
-  border-radius: 48% 48% 45% 45%;
-  background: radial-gradient(ellipse at 35% 25%,#fff9ef 0%,#f4e4d0 48%,#d9bea0 100%);
-  box-shadow: inset -5px -7px 12px #b99a7c25,inset 4px 5px 10px #ffffffb0;
-}
-.bolita-ojo {
-  position: absolute;
-  top: 48px;
-  width: 9px;
-  height: 12px;
-  border-radius: 50%;
-  background: #514238;
-}
-.bolita-ojo.izquierda { left: 35px; }
-.bolita-ojo.derecha { right: 35px; }
-.bolita-mejilla {
-  position: absolute;
-  top: 64px;
-  width: 19px;
-  height: 10px;
-  border-radius: 50%;
-  background: #eeb6b2a0;
-  filter: blur(2px);
-}
-.bolita-mejilla.izquierda { left: 19px; }
-.bolita-mejilla.derecha { right: 19px; }
-
-/* Hocico y sonrisa corregidos */
-.bolita-hocico {
-  position: absolute;
-  top: 65px;
-  left: 53px;
-  width: 22px;
-  height: 15px;
-  border-radius: 50%;
-  background: #f7e8d9;
-}
-.bolita-hocico::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 7px;
-  width: 8px;
-  height: 6px;
-  border-radius: 50% 50% 60% 60%;
-  background: #c98483;
-}
-.bolita-hocico::after {
-  content: "";
-  position: absolute;
-  top: 6px;
-  left: 10px;
-  width: 2px;
-  height: 5px;
-  background: #806052;
-}
-.bolita-sonrisa {
-  position: absolute;
-  top: 77px;
-  left: 48px;
-  width: 15px;
-  height: 8px;
-  border-bottom: 2px solid #806052;
-  border-radius: 0 0 60% 60%;
-}
-.bolita-sonrisa::after {
-  content: "";
-  position: absolute;
-  left: 14px;
-  top: 0;
-  width: 15px;
-  height: 8px;
-  border-bottom: 2px solid #806052;
-  border-radius: 0 0 60% 60%;
-}
-.bolita-patita {
-  position: absolute;
-  z-index: 2;
-  top: 128px;
-  width: 43px;
-  height: 25px;
-  border-radius: 50% 50% 35% 35%;
-  background: linear-gradient(#f8ecdc,#dfc6a9);
-  box-shadow: inset 0 3px 4px #ffffffa0;
-}
-.bolita-patita.izquierda { left: 26px; transform: rotate(-10deg); }
-.bolita-patita.derecha { right: 26px; transform: rotate(10deg); }
-@keyframes bolita-respira {
+@keyframes respira {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
 }
+.oreja {
+  position: absolute;
+  top: 0;
+  width: 57px;
+  height: 135px;
+  border-radius: 55% 55% 45% 45%;
+  background: linear-gradient(90deg, #d4b28d, #fff0d9 48%, #d7b998);
+  box-shadow: inset 2px 0 5px #fff9ed;
+}
+.oreja::after {
+  content: "";
+  position: absolute;
+  inset: 14px 12px 17px;
+  border-radius: inherit;
+  background: linear-gradient(#f4bdc9, #f8dce1);
+}
+.oreja.izquierda {
+  left: 38px;
+  transform: rotate(-26deg);
+}
+.oreja.derecha {
+  right: 38px;
+  transform: rotate(25deg);
+}
+.cabeza {
+  position: absolute;
+  z-index: 1;
+  top: 55px;
+  left: 22px;
+  width: 176px;
+  height: 153px;
+  border-radius: 49% 49% 43% 43%;
+  background: radial-gradient(ellipse at 34% 25%, #fff8eb, #f4dfc5 55%, #d6b38e);
+  box-shadow:
+    inset -7px -9px 14px #b28b6630,
+    inset 5px 6px 12px #fff9ee;
+}
+.ojo {
+  position: absolute;
+  top: 67px;
+  width: 16px;
+  height: 21px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, white 0 10%, #67452e 12% 35%, #39251c 70%);
+  box-shadow: 0 2px 2px #76523840;
+}
+.ojo.izquierda { left: 45px; }
+.ojo.derecha { right: 45px; }
+.meji {
+  position: absolute;
+  top: 91px;
+  width: 28px;
+  height: 16px;
+  border-radius: 50%;
+  background: #eeaaa9a0;
+  filter: blur(3px);
+}
+.meji.izquierda { left: 17px; }
+.meji.derecha { right: 17px; }
+.hocico {
+  position: absolute;
+  top: 94px;
+  left: 72px;
+  width: 32px;
+  height: 23px;
+  border-radius: 50%;
+  background: #fff0df;
+}
+.nariz {
+  position: absolute;
+  left: 11px;
+  top: 1px;
+  width: 11px;
+  height: 8px;
+  border-radius: 50% 50% 60% 60%;
+  background: #df8c91;
+}
+.boca {
+  position: absolute;
+  left: 15px;
+  top: 7px;
+  width: 2px;
+  height: 8px;
+  background: #8d6550;
+}
+.sonrisa {
+  position: absolute;
+  left: 3px;
+  top: 12px;
+  width: 12px;
+  height: 7px;
+  border-bottom: 2px solid #8d6550;
+  border-radius: 0 0 70% 70%;
+}
+.sonrisa::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0;
+  width: 12px;
+  height: 7px;
+  border-bottom: 2px solid #8d6550;
+  border-radius: 0 0 70% 70%;
+}
+.patita {
+  position: absolute;
+  z-index: 2;
+  top: 188px;
+  width: 65px;
+  height: 34px;
+  border-radius: 50% 50% 35% 35%;
+  background: linear-gradient(#fff0dc, #dfc5a6);
+  box-shadow: inset 0 4px 5px #fff9ed;
+}
+.patita.izquierda { left: 38px; transform: rotate(-9deg); }
+.patita.derecha { right: 38px; transform: rotate(9deg); }
+
 .bolita-cerrar {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 2;
-  border: 0;
+  z-index: 4;
+  border: none;
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  background: #edf5ff;
-  color: #2864a8;
+  width: 27px;
+  height: 27px;
+  background: #e9f5ff;
+  color: #0754a6;
+  font-size: 18px;
   cursor: pointer;
-  font-size: 16px;
 }
-@media (max-width:760px) {
+
+@media (max-width: 900px) {
   .tarjetas { grid-template-columns: 1fr; }
-  main { margin-top: 30px; }
-  .tarjeta { padding: 22px; }
-  header { padding: 34px 16px; }
+  .tarjeta { min-height: 235px; grid-template-columns: 35% 65%; }
+  .ilustracion { font-size: 5rem; }
+  .tarjeta h3 { font-size: 1.7rem; }
+  .tarjeta p { font-size: 1rem; }
+  .boton { font-size: 1rem; }
 }
-@media (max-width:480px) {
-  .bolita { right: 5px; width: 145px; }
-  .bolita-bocadillo { font-size: 12px; padding: 10px; }
-  .bolita-coneja { transform: scale(.85); transform-origin: bottom center; }
+@media (max-width: 520px) {
+  .cabecera { min-height: 220px; padding-top: 35px; }
+  .marca { padding: 8px 12px; }
+  .marca h1 { font-size: 2.25rem; }
+  .estrella.uno { left: 5%; }
+  .estrella.dos { right: 6%; }
+  main { width: calc(100% - 24px); }
+  .tarjeta { padding: 18px 13px; grid-template-columns: 31% 69%; gap: 5px; }
+  .ilustracion { font-size: 3.8rem; }
+  .tarjeta h3 { font-size: 1.35rem; }
+  .tarjeta p { font-size: .88rem; }
+  .boton { padding: 10px 6px; font-size: .8rem; }
+  .bolita { width: 155px; right: 0; }
+  .bolita-dibujo { transform: scale(.76); transform-origin: bottom center; margin-top: -18px; }
+  .bolita-mensaje { font-size: 12px; padding: 10px; }
+  .bolita-mensaje strong { font-size: 1rem; }
 }
-@media (prefers-reduced-motion:reduce) {
-  html { scroll-behavior: auto; }
-  header h1,.tarjeta,.bolita,.bolita-coneja { animation: none; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
 }
 </style>
 </head>
 
 <body>
-<header>
-  <h1>Chispa Educativa ✨</h1>
-  <p>¡Enciende tu chispa y aprende jugando!</p>
+
+<header class="cabecera">
+  <span class="estrella uno">✦</span>
+  <span class="estrella dos">★</span>
+  <span class="estrella tres">✧</span>
+
+  <div class="marca">
+    <h1>Chispa <span class="educativa">Educativa</span></h1>
+  </div>
+  <p class="eslogan">¡Enciende tu chispa y aprende jugando!</p>
+
+  <svg class="onda" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,42 C180,100 270,0 460,45 S780,92 970,42 S1240,0 1440,43 L1440,100 L0,100Z" fill="#d9efff" opacity=".85"/>
+    <path d="M0,65 C210,15 330,100 520,55 S860,20 1050,65 S1280,100 1440,48 L1440,100 L0,100Z" fill="#f7fbff"/>
+  </svg>
 </header>
 
 <main>
   <section class="presentacion">
     <h2>¿Qué es Chispa Educativa?</h2>
+    <div class="rayita"></div>
     <p>Chispa Educativa es un espacio para aprender de forma divertida, despertar la curiosidad y dejar volar la imaginación. Aquí encontrarás juegos interactivos, fichas para imprimir y retos de informática para aprender a tu ritmo.</p>
     <p class="frase">¡Cada actividad es una nueva oportunidad para descubrir!</p>
   </section>
 
   <section class="tarjetas" aria-label="Explora Chispa Educativa">
-    <article class="tarjeta">
-      <div class="icono" aria-hidden="true">🎮</div>
-      <h3>Actividades interactivas</h3>
-      <p>Juegos, cuentos y pequeños desafíos para aprender mientras te diviertes.</p>
-      <a class="boton" href="actividades/index.html">Explorar actividades</a>
+    <article class="tarjeta naranja">
+      <div class="ilustracion" aria-hidden="true">🎮</div>
+      <div class="contenido-tarjeta">
+        <h3>Actividades interactivas</h3>
+        <p>Juegos, cuentos y pequeños desafíos para aprender mientras te diviertes.</p>
+        <a class="boton" href="actividades/index.html">Explorar actividades　➜</a>
+      </div>
     </article>
 
-    <article class="tarjeta">
-      <div class="icono" aria-hidden="true">🖍️</div>
-      <h3>Fichas para descargar</h3>
-      <p>Actividades imprimibles para practicar, dibujar y desarrollar la creatividad.</p>
-      <a class="boton" href="fichas/index.html">Ver las fichas</a>
+    <article class="tarjeta lila">
+      <div class="ilustracion" aria-hidden="true">📝✏️</div>
+      <div class="contenido-tarjeta">
+        <h3>Fichas para descargar</h3>
+        <p>Actividades imprimibles para practicar, dibujar y desarrollar la creatividad.</p>
+        <a class="boton" href="fichas/index.html">Ver las fichas　➜</a>
+      </div>
     </article>
 
-    <article class="tarjeta">
-      <div class="icono" aria-hidden="true">💻</div>
-      <h3>Pequeños informáticos</h3>
-      <p>Retos de lógica, primeros pasos en programación y aprendizaje de tecnología.</p>
-      <a class="boton" href="informatica/index.html">Descubrir retos</a>
+    <article class="tarjeta rosa">
+      <div class="ilustracion" aria-hidden="true">💻</div>
+      <div class="contenido-tarjeta">
+        <h3>Pequeños informáticos</h3>
+        <p>Retos de lógica, primeros pasos en programación y aprendizaje de tecnología.</p>
+        <a class="boton" href="informatica/index.html">Descubrir retos　➜</a>
+      </div>
     </article>
   </section>
 </main>
 
 <footer>
-  <p>Chispa Educativa · Aprender también es una aventura. 💙</p>
+  <div class="trazo">♡　〰〰〰〰〰〰〰</div>
+  <p>Aprender también es una aventura. 💙</p>
 </footer>
 
+<!-- Bolita -->
 <aside class="bolita" id="bolita" aria-label="Bolita, tu compañera de aprendizaje">
   <button class="bolita-cerrar" id="cerrarBolita" aria-label="Ocultar a Bolita">×</button>
-  <div class="bolita-bocadillo" id="mensajeBolita" aria-live="polite">
-    ¡Hola! Soy Bolita. 💛 ¡Vamos a aprender jugando!
+
+  <div class="bolita-mensaje" id="mensajeBolita" aria-live="polite">
+    <strong>¡Hola! Soy Bolita 💛</strong>
+    ¿Qué te gustaría descubrir hoy?
   </div>
 
-  <div class="bolita-coneja" id="coneja" role="button" tabindex="0"
-       aria-label="Toca a Bolita para descubrir otro mensaje">
-    <div class="bolita-oreja izquierda"></div>
-    <div class="bolita-oreja derecha"></div>
-    <div class="bolita-cabeza">
-      <div class="bolita-ojo izquierda"></div>
-      <div class="bolita-ojo derecha"></div>
-      <div class="bolita-mejilla izquierda"></div>
-      <div class="bolita-mejilla derecha"></div>
-      <div class="bolita-hocico"></div>
-      <div class="bolita-sonrisa"></div>
+  <div class="bolita-dibujo" id="coneja" role="button" tabindex="0"
+       aria-label="Pulsa a Bolita para descubrir otro mensaje">
+    <div class="oreja izquierda"></div>
+    <div class="oreja derecha"></div>
+
+    <div class="cabeza">
+      <div class="ojo izquierda"></div>
+      <div class="ojo derecha"></div>
+      <div class="meji izquierda"></div>
+      <div class="meji derecha"></div>
+      <div class="hocico">
+        <div class="nariz"></div>
+        <div class="boca"></div>
+        <div class="sonrisa"></div>
+      </div>
     </div>
-    <div class="bolita-patita izquierda"></div>
-    <div class="bolita-patita derecha"></div>
+
+    <div class="patita izquierda"></div>
+    <div class="patita derecha"></div>
   </div>
 </aside>
 
 <script>
 const mensajesBolita = [
-  "¡Hola! Soy Bolita. 💛 ¡Vamos a aprender jugando!",
-  "¡Tú puedes! Cada pequeño paso cuenta. ✨",
-  "¿Probamos una actividad nueva? 🎮",
-  "¡Equivocarse también es aprender! 🌷",
-  "¡Tu curiosidad es tu superpoder! 🌟"
+  ["¡Hola! Soy Bolita 💛", "¿Qué te gustaría descubrir hoy?"],
+  ["¡Tú puedes! ✨", "Cada pequeño paso cuenta."],
+  ["¡Vamos a jugar! 🎮", "Aprender puede ser muy divertido."],
+  ["¡No tengas miedo! 🌷", "Equivocarse también es aprender."],
+  ["¡Sigue explorando! ⭐", "Tu curiosidad es tu superpoder."]
 ];
 
 let indiceBolita = 0;
 
 function cambiarMensajeBolita() {
   indiceBolita = (indiceBolita + 1) % mensajesBolita.length;
-  document.getElementById("mensajeBolita").textContent =
-    mensajesBolita[indiceBolita];
+  document.getElementById("mensajeBolita").innerHTML =
+    "<strong>" + mensajesBolita[indiceBolita][0] + "</strong>" +
+    mensajesBolita[indiceBolita][1];
 }
 
 document.getElementById("coneja").addEventListener("click", cambiarMensajeBolita);
@@ -387,5 +556,6 @@ document.getElementById("cerrarBolita").addEventListener("click", function() {
   document.getElementById("bolita").hidden = true;
 });
 </script>
+
 </body>
 </html>
