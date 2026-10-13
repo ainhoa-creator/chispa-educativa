@@ -1,341 +1,391 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chispa Educativa ✨</title>
+<meta name="description" content="¡Enciende tu chispa y aprende jugando!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <title>Chispa Educativa</title>
-  <meta name="description" content="¡Enciende tu chispa y aprende jugando! Descubre actividades interactivas, fichas para descargar y retos de informática.">
+<style>
+:root {
+  --azul: #2864a8;
+  --azul-oscuro: #194b83;
+  --azul-claro: #edf5ff;
+  --texto: #30445c;
+  --naranja: #f5a45b;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background: #f8fbff;
+  color: var(--texto);
+  line-height: 1.7;
+}
+header {
+  background: var(--azul);
+  color: white;
+  text-align: center;
+  padding: 42px 20px 38px;
+  overflow: hidden;
+}
+header h1 {
+  display: inline-block;
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  animation: chispa 2.4s ease-in-out infinite;
+}
+header p { margin: 12px 0 0; color: #edf5ff; font-size: 1.1rem; }
+@keyframes chispa {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+main { width: min(100% - 36px, 1000px); margin: 42px auto; }
+.presentacion { max-width: 760px; margin: 0 auto 38px; text-align: center; }
+h2,h3 { font-family: 'Fredoka', sans-serif; font-weight: 500; }
+.presentacion h2 { color: var(--azul); font-size: clamp(1.7rem,4vw,2.1rem); margin: 0 0 14px; }
+.presentacion p { font-size: 1.05rem; margin: 10px 0; }
+.frase { color: var(--azul); font-weight: 800; margin-top: 18px !important; }
 
-  <!-- Tipografías -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+.tarjetas { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.tarjeta {
+  background: white;
+  border: 1px solid #e2eaf5;
+  border-top: 5px solid var(--azul);
+  border-radius: 15px;
+  padding: 24px 21px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 4px 14px #25507d0d;
+  transition: transform .2s, box-shadow .2s;
+}
+.tarjeta:nth-child(1) { border-top-color: var(--naranja); }
+.tarjeta:nth-child(2) { border-top-color: #b9a0e8; }
+.tarjeta:nth-child(3) { border-top-color: #e9a9c6; }
+.tarjeta:hover { transform: translateY(-4px); box-shadow: 0 8px 20px #25507d17; }
+.icono { font-size: 2rem; margin-bottom: 8px; }
+.tarjeta h3 { color: var(--azul); font-size: 1.3rem; line-height: 1.3; margin: 0 0 10px; }
+.tarjeta p { margin: 0 0 22px; font-size: .98rem; }
+.boton {
+  display: inline-block;
+  margin-top: auto;
+  padding: 10px 15px;
+  background: var(--azul);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 9px;
+  font-weight: 800;
+}
+.tarjeta:nth-child(1) .boton { background: #e88a35; }
+.tarjeta:nth-child(2) .boton { background: #8765bd; }
+.tarjeta:nth-child(3) .boton { background: #cf6795; }
+.boton:hover { background: var(--azul-oscuro); }
+footer {
+  text-align: center;
+  padding: 22px 16px;
+  background: var(--azul-claro);
+  color: var(--azul);
+  margin-top: 48px;
+}
 
-  <style>
-    :root {
-      --azul: #2864a8;
-      --azul-oscuro: #194b83;
-      --azul-claro: #edf5ff;
-      --texto: #30445c;
-      --naranja: #f5a45b;
-      --lila: #d9c9f5;
-      --rosa: #f8d5e4;
-      --blanco: #ffffff;
-    }
+/* BOLITA: conejita dibujada solo con CSS */
+.bolita {
+  position: fixed;
+  right: 18px;
+  bottom: -8px;
+  z-index: 1000;
+  width: 180px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  animation: bolita-asoma 1s ease-out both;
+}
+@keyframes bolita-asoma {
+  from { transform: translateY(150px); }
+  to { transform: translateY(0); }
+}
+.bolita-bocadillo {
+  position: relative;
+  margin: 0 0 12px;
+  padding: 12px 15px;
+  background: white;
+  color: #30445c;
+  border: 2px solid #e8d8c8;
+  border-radius: 20px;
+  box-shadow: 0 5px 18px #30445c20;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+.bolita-bocadillo::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  right: 34px;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-right: 2px solid #e8d8c8;
+  border-bottom: 2px solid #e8d8c8;
+  transform: rotate(45deg);
+}
+.bolita-coneja {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 5px 5px #604b3920);
+  animation: bolita-respira 3s ease-in-out infinite;
+}
+.bolita-oreja {
+  position: absolute;
+  top: -12px;
+  width: 39px;
+  height: 101px;
+  border-radius: 60% 60% 45% 45%;
+  background: linear-gradient(90deg,#d8c2a8,#f5e8d7 48%,#dfc8af);
+  transform-origin: bottom center;
+}
+.bolita-oreja::after {
+  content: "";
+  position: absolute;
+  inset: 14px 10px 15px;
+  border-radius: inherit;
+  background: linear-gradient(#efb9c5,#f7d6dc);
+}
+.bolita-oreja.izquierda { left: 34px; transform: rotate(-19deg); }
+.bolita-oreja.derecha { right: 34px; transform: rotate(17deg); }
 
-    * {
-      box-sizing: border-box;
-    }
+.bolita-cabeza {
+  position: absolute;
+  width: 128px;
+  height: 116px;
+  left: 11px;
+  top: 34px;
+  border-radius: 48% 48% 45% 45%;
+  background: radial-gradient(ellipse at 35% 25%,#fff9ef 0%,#f4e4d0 48%,#d9bea0 100%);
+  box-shadow: inset -5px -7px 12px #b99a7c25,inset 4px 5px 10px #ffffffb0;
+}
+.bolita-ojo {
+  position: absolute;
+  top: 48px;
+  width: 9px;
+  height: 12px;
+  border-radius: 50%;
+  background: #514238;
+}
+.bolita-ojo.izquierda { left: 35px; }
+.bolita-ojo.derecha { right: 35px; }
+.bolita-mejilla {
+  position: absolute;
+  top: 64px;
+  width: 19px;
+  height: 10px;
+  border-radius: 50%;
+  background: #eeb6b2a0;
+  filter: blur(2px);
+}
+.bolita-mejilla.izquierda { left: 19px; }
+.bolita-mejilla.derecha { right: 19px; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Nunito', sans-serif;
-      background: #f8fbff;
-      color: var(--texto);
-      line-height: 1.7;
-    }
-
-    /* Cabecera */
-    header {
-      background: var(--azul);
-      color: var(--blanco);
-      text-align: center;
-      padding: 42px 20px 38px;
-      overflow: hidden;
-    }
-
-    header h1 {
-      display: inline-block;
-      margin: 0;
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 600;
-      line-height: 1.2;
-      animation: chispaEnMovimiento 2.4s ease-in-out infinite;
-    }
-
-    header p {
-      margin: 12px 0 0;
-      color: #edf5ff;
-      font-size: 1.1rem;
-    }
-
-    @keyframes chispaEnMovimiento {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      25% {
-        transform: translateY(-5px) rotate(-1deg);
-      }
-
-      50% {
-        transform: translateY(-9px) rotate(0deg);
-      }
-
-      75% {
-        transform: translateY(-5px) rotate(1deg);
-      }
-    }
-
-    /* Contenido principal */
-    main {
-      width: min(100% - 36px, 1000px);
-      margin: 42px auto;
-    }
-
-    .presentacion {
-      max-width: 760px;
-      margin: 0 auto 38px;
-      text-align: center;
-    }
-
-    h2,
-    h3 {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 500;
-    }
-
-    .presentacion h2 {
-      color: var(--azul);
-      font-size: clamp(1.7rem, 4vw, 2.1rem);
-      margin: 0 0 14px;
-    }
-
-    .presentacion p {
-      font-size: 1.05rem;
-      margin: 10px 0;
-    }
-
-    .frase {
-      color: var(--azul);
-      font-weight: 800;
-      margin-top: 18px !important;
-    }
-
-    /* Tres tarjetas */
-    .tarjetas {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .tarjeta {
-      background: var(--blanco);
-      border: 1px solid #e2eaf5;
-      border-top: 5px solid var(--azul);
-      border-radius: 15px;
-      padding: 24px 21px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      box-shadow: 0 4px 14px rgba(37, 80, 125, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .tarjeta:nth-child(1) {
-      border-top-color: var(--naranja);
-    }
-
-    .tarjeta:nth-child(2) {
-      border-top-color: #b9a0e8;
-    }
-
-    .tarjeta:nth-child(3) {
-      border-top-color: #e9a9c6;
-    }
-
-    .tarjeta:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(37, 80, 125, 0.09);
-    }
-
-    .icono {
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-
-    .tarjeta h3 {
-      color: var(--azul);
-      font-size: 1.3rem;
-      line-height: 1.3;
-      margin: 0 0 10px;
-    }
-
-    .tarjeta p {
-      margin: 0 0 22px;
-      font-size: 0.98rem;
-    }
-
-    /* Botones */
-    .boton {
-      display: inline-block;
-      margin-top: auto;
-      padding: 10px 15px;
-      background: var(--azul);
-      color: var(--blanco);
-      text-decoration: none;
-      text-align: center;
-      border-radius: 9px;
-      font-weight: 800;
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .tarjeta:nth-child(1) .boton {
-      background: #e88a35;
-    }
-
-    .tarjeta:nth-child(2) .boton {
-      background: #8765bd;
-    }
-
-    .tarjeta:nth-child(3) .boton {
-      background: #cf6795;
-    }
-
-    .boton:hover {
-      background: var(--azul-oscuro);
-      transform: translateY(-2px);
-    }
-
-    .boton:focus-visible {
-      outline: 3px solid #f5c56c;
-      outline-offset: 3px;
-    }
-
-    /* Pie de página */
-    footer {
-      text-align: center;
-      padding: 22px 16px;
-      background: var(--azul-claro);
-      color: var(--azul);
-      margin-top: 48px;
-    }
-
-    footer p {
-      margin: 0;
-    }
-
-    /* Móviles y tabletas */
-    @media (max-width: 760px) {
-      .tarjetas {
-        grid-template-columns: 1fr;
-      }
-
-      main {
-        margin-top: 30px;
-      }
-
-      .tarjeta {
-        padding: 22px;
-      }
-
-      header {
-        padding: 34px 16px;
-      }
-    }
-
-    /* Respetar las preferencias de movimiento */
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      header h1 {
-        animation: none;
-      }
-
-      .tarjeta,
-      .boton {
-        transition: none;
-      }
-    }
-  </style>
+/* Hocico y sonrisa corregidos */
+.bolita-hocico {
+  position: absolute;
+  top: 65px;
+  left: 53px;
+  width: 22px;
+  height: 15px;
+  border-radius: 50%;
+  background: #f7e8d9;
+}
+.bolita-hocico::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 7px;
+  width: 8px;
+  height: 6px;
+  border-radius: 50% 50% 60% 60%;
+  background: #c98483;
+}
+.bolita-hocico::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  width: 2px;
+  height: 5px;
+  background: #806052;
+}
+.bolita-sonrisa {
+  position: absolute;
+  top: 77px;
+  left: 48px;
+  width: 15px;
+  height: 8px;
+  border-bottom: 2px solid #806052;
+  border-radius: 0 0 60% 60%;
+}
+.bolita-sonrisa::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 0;
+  width: 15px;
+  height: 8px;
+  border-bottom: 2px solid #806052;
+  border-radius: 0 0 60% 60%;
+}
+.bolita-patita {
+  position: absolute;
+  z-index: 2;
+  top: 128px;
+  width: 43px;
+  height: 25px;
+  border-radius: 50% 50% 35% 35%;
+  background: linear-gradient(#f8ecdc,#dfc6a9);
+  box-shadow: inset 0 3px 4px #ffffffa0;
+}
+.bolita-patita.izquierda { left: 26px; transform: rotate(-10deg); }
+.bolita-patita.derecha { right: 26px; transform: rotate(10deg); }
+@keyframes bolita-respira {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.bolita-cerrar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  border: 0;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background: #edf5ff;
+  color: #2864a8;
+  cursor: pointer;
+  font-size: 16px;
+}
+@media (max-width:760px) {
+  .tarjetas { grid-template-columns: 1fr; }
+  main { margin-top: 30px; }
+  .tarjeta { padding: 22px; }
+  header { padding: 34px 16px; }
+}
+@media (max-width:480px) {
+  .bolita { right: 5px; width: 145px; }
+  .bolita-bocadillo { font-size: 12px; padding: 10px; }
+  .bolita-coneja { transform: scale(.85); transform-origin: bottom center; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  header h1,.tarjeta,.bolita,.bolita-coneja { animation: none; transition: none; }
+}
+</style>
 </head>
 
 <body>
+<header>
+  <h1>Chispa Educativa ✨</h1>
+  <p>¡Enciende tu chispa y aprende jugando!</p>
+</header>
 
-  <header>
-    <h1>Chispa Educativa ✨</h1>
-    <p>¡Enciende tu chispa y aprende jugando!</p>
-  </header>
+<main>
+  <section class="presentacion">
+    <h2>¿Qué es Chispa Educativa?</h2>
+    <p>Chispa Educativa es un espacio para aprender de forma divertida, despertar la curiosidad y dejar volar la imaginación. Aquí encontrarás juegos interactivos, fichas para imprimir y retos de informática para aprender a tu ritmo.</p>
+    <p class="frase">¡Cada actividad es una nueva oportunidad para descubrir!</p>
+  </section>
 
-  <main>
+  <section class="tarjetas" aria-label="Explora Chispa Educativa">
+    <article class="tarjeta">
+      <div class="icono" aria-hidden="true">🎮</div>
+      <h3>Actividades interactivas</h3>
+      <p>Juegos, cuentos y pequeños desafíos para aprender mientras te diviertes.</p>
+      <a class="boton" href="actividades/index.html">Explorar actividades</a>
+    </article>
 
-    <section class="presentacion">
-      <h2>¿Qué es Chispa Educativa?</h2>
+    <article class="tarjeta">
+      <div class="icono" aria-hidden="true">🖍️</div>
+      <h3>Fichas para descargar</h3>
+      <p>Actividades imprimibles para practicar, dibujar y desarrollar la creatividad.</p>
+      <a class="boton" href="fichas/index.html">Ver las fichas</a>
+    </article>
 
-      <p>
-        Chispa Educativa es un espacio para aprender de forma
-        divertida, despertar la curiosidad y dejar volar la
-        imaginación. Aquí encontrarás juegos interactivos,
-        fichas para imprimir y retos de informática para
-        aprender a tu ritmo.
-      </p>
+    <article class="tarjeta">
+      <div class="icono" aria-hidden="true">💻</div>
+      <h3>Pequeños informáticos</h3>
+      <p>Retos de lógica, primeros pasos en programación y aprendizaje de tecnología.</p>
+      <a class="boton" href="informatica/index.html">Descubrir retos</a>
+    </article>
+  </section>
+</main>
 
-      <p class="frase">
-        ¡Cada actividad es una nueva oportunidad para descubrir!
-      </p>
-    </section>
+<footer>
+  <p>Chispa Educativa · Aprender también es una aventura. 💙</p>
+</footer>
 
-    <section class="tarjetas" aria-label="Explora Chispa Educativa">
+<aside class="bolita" id="bolita" aria-label="Bolita, tu compañera de aprendizaje">
+  <button class="bolita-cerrar" id="cerrarBolita" aria-label="Ocultar a Bolita">×</button>
+  <div class="bolita-bocadillo" id="mensajeBolita" aria-live="polite">
+    ¡Hola! Soy Bolita. 💛 ¡Vamos a aprender jugando!
+  </div>
 
-      <article class="tarjeta">
-        <div class="icono" aria-hidden="true">🎮</div>
+  <div class="bolita-coneja" id="coneja" role="button" tabindex="0"
+       aria-label="Toca a Bolita para descubrir otro mensaje">
+    <div class="bolita-oreja izquierda"></div>
+    <div class="bolita-oreja derecha"></div>
+    <div class="bolita-cabeza">
+      <div class="bolita-ojo izquierda"></div>
+      <div class="bolita-ojo derecha"></div>
+      <div class="bolita-mejilla izquierda"></div>
+      <div class="bolita-mejilla derecha"></div>
+      <div class="bolita-hocico"></div>
+      <div class="bolita-sonrisa"></div>
+    </div>
+    <div class="bolita-patita izquierda"></div>
+    <div class="bolita-patita derecha"></div>
+  </div>
+</aside>
 
-        <h3>Actividades interactivas</h3>
+<script>
+const mensajesBolita = [
+  "¡Hola! Soy Bolita. 💛 ¡Vamos a aprender jugando!",
+  "¡Tú puedes! Cada pequeño paso cuenta. ✨",
+  "¿Probamos una actividad nueva? 🎮",
+  "¡Equivocarse también es aprender! 🌷",
+  "¡Tu curiosidad es tu superpoder! 🌟"
+];
 
-        <p>
-          Juegos, cuentos y pequeños desafíos para aprender
-          mientras te diviertes.
-        </p>
+let indiceBolita = 0;
 
-        <a class="boton" href="actividades/index.html">
-          Explorar actividades
-        </a>
-      </article>
+function cambiarMensajeBolita() {
+  indiceBolita = (indiceBolita + 1) % mensajesBolita.length;
+  document.getElementById("mensajeBolita").textContent =
+    mensajesBolita[indiceBolita];
+}
 
-      <article class="tarjeta">
-        <div class="icono" aria-hidden="true">🖍️</div>
+document.getElementById("coneja").addEventListener("click", cambiarMensajeBolita);
 
-        <h3>Fichas para descargar</h3>
+document.getElementById("coneja").addEventListener("keydown", function(event) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    cambiarMensajeBolita();
+  }
+});
 
-        <p>
-          Actividades imprimibles para practicar, dibujar
-          y desarrollar la creatividad.
-        </p>
-
-        <a class="boton" href="fichas/index.html">
-          Ver las fichas
-        </a>
-      </article>
-
-      <article class="tarjeta">
-        <div class="icono" aria-hidden="true">💻</div>
-
-        <h3>Pequeños informáticos</h3>
-
-        <p>
-          Retos de lógica, primeros pasos en programación
-          y aprendizaje de tecnología.
-        </p>
-
-        <a class="boton" href="informatica/index.html">
-          Descubrir retos
-        </a>
-      </article>
-
-    </section>
-  </main>
-
-  <footer>
-    <p>Chispa Educativa · Aprender también es una aventura. 💙</p>
-  </footer>
-
+document.getElementById("cerrarBolita").addEventListener("click", function() {
+  document.getElementById("bolita").hidden = true;
+});
+</script>
 </body>
 </html>
