@@ -310,7 +310,7 @@ footer p { margin: 0; }
 .meji.izquierda { left: 17px; }
 .meji.derecha { right: 17px; }
 
-/* HOCICO Y BOCA NUEVOS */
+/* HOCICO Y BOCA ARREGLADOS */
 .hocico {
   position: absolute;
   top: 91px;
@@ -324,40 +324,31 @@ footer p { margin: 0; }
 .nariz {
   position: absolute;
   left: 50%;
-  top: 3px;
+  top: 4px;
   transform: translateX(-50%);
-  width: 13px;
-  height: 9px;
-  border-radius: 50% 50% 60% 60%;
+  width: 12px;
+  height: 8px;
+  border-radius: 50%;
   background: #e88f9b;
 }
 .boca {
   position: absolute;
-  top: 10px;
+  top: 12px;
   left: 50%;
-  width: 2px;
-  height: 7px;
-  background: #89634f;
   transform: translateX(-50%);
+  width: 2px;
+  height: 5px;
+  background: #89634f;
 }
 .sonrisa {
   position: absolute;
   top: 15px;
-  left: 8px;
-  width: 12px;
-  height: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 8px;
   border-bottom: 2px solid #89634f;
-  border-radius: 0 0 70% 70%;
-}
-.sonrisa::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 12px;
-  width: 12px;
-  height: 7px;
-  border-bottom: 2px solid #89634f;
-  border-radius: 0 0 70% 70%;
+  border-radius: 0 0 50% 50%;
 }
 
 .patita {
