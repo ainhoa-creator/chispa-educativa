@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chispa Educativa ✨</title>
+<title>Chispa Education ✨</title>
 <meta name="description" content="¡Enciende tu chispa y aprende jugando!">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +62,7 @@ body {
   font: 700 clamp(2.3rem, 6vw, 4.5rem)/1.1 'Fredoka', sans-serif;
   letter-spacing: -1.5px;
 }
-.marca .educativa { color: #ff9c35; }
+.marca .education { color: #ff9c35; }
 .eslogan {
   position: relative;
   z-index: 1;
@@ -200,8 +200,8 @@ footer {
 }
 footer p { margin: 0; }
 
-/* BOLITA */
-.bolita {
+/* MASCOTA (CHISPA) */
+.chispa-flotante {
   position: fixed;
   z-index: 10;
   right: 8px;
@@ -214,7 +214,7 @@ footer p { margin: 0; }
   from { transform: translateY(180px); }
   to { transform: translateY(0); }
 }
-.bolita-mensaje {
+.chispa-mensaje {
   position: relative;
   z-index: 3;
   margin: 0 0 -3px;
@@ -228,12 +228,12 @@ footer p { margin: 0; }
   line-height: 1.35;
   box-shadow: 0 5px 16px #235c9b20;
 }
-.bolita-mensaje strong {
+.chispa-mensaje strong {
   display: block;
   font-size: 1.15rem;
   margin-bottom: 5px;
 }
-.bolita-mensaje::after {
+.chispa-mensaje::after {
   content: "";
   position: absolute;
   bottom: -9px;
@@ -245,7 +245,7 @@ footer p { margin: 0; }
   border-bottom: 3px solid #d9eaff;
   transform: rotate(45deg);
 }
-.bolita-dibujo {
+.chispa-dibujo {
   position: relative;
   width: 220px;
   height: 220px;
@@ -363,7 +363,7 @@ footer p { margin: 0; }
 }
 .patita.izquierda { left: 38px; transform: rotate(-9deg); }
 .patita.derecha { right: 38px; transform: rotate(9deg); }
-.bolita-cerrar {
+.chispa-cerrar {
   position: absolute;
   top: 0;
   right: 0;
@@ -398,10 +398,10 @@ footer p { margin: 0; }
   .tarjeta h3 { font-size: 1.35rem; }
   .tarjeta p { font-size: .88rem; }
   .boton { padding: 10px 6px; font-size: .8rem; }
-  .bolita { width: 155px; right: 0; }
-  .bolita-dibujo { transform: scale(.76); transform-origin: bottom center; margin-top: -18px; }
-  .bolita-mensaje { font-size: 12px; padding: 10px; }
-  .bolita-mensaje strong { font-size: 1rem; }
+  .chispa-flotante { width: 155px; right: 0; }
+  .chispa-dibujo { transform: scale(.76); transform-origin: bottom center; margin-top: -18px; }
+  .chispa-mensaje { font-size: 12px; padding: 10px; }
+  .chispa-mensaje strong { font-size: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -418,7 +418,7 @@ footer p { margin: 0; }
   <span class="estrella dos">★</span>
   <span class="estrella tres">✧</span>
   <div class="marca">
-    <h1>Chispa <span class="educativa">Educativa</span></h1>
+    <h1>Chispa <span class="education">Education</span></h1>
   </div>
   <p class="eslogan">¡Enciende tu chispa y aprende jugando!</p>
   <svg class="onda" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
@@ -429,13 +429,13 @@ footer p { margin: 0; }
 
 <main>
   <section class="presentacion">
-    <h2>¿Qué es Chispa Educativa?</h2>
+    <h2>¿Qué es Chispa Education?</h2>
     <div class="rayita"></div>
-    <p>Chispa Educativa es un espacio para aprender de forma divertida, despertar la curiosidad y dejar volar la imaginación. Aquí encontrarás juegos interactivos, fichas para imprimir y retos de informática para aprender a tu ritmo.</p>
+    <p>Chispa Education es un espacio para aprender de forma divertida, despertar la curiosidad y dejar volar la imaginación. Aquí encontrarás juegos interactivos, fichas para imprimir y retos de informática para aprender a tu ritmo.</p>
     <p class="frase">¡Cada actividad es una nueva oportunidad para descubrir!</p>
   </section>
 
-  <section class="tarjetas" aria-label="Explora Chispa Educativa">
+  <section class="tarjetas" aria-label="Explora Chispa Education">
     <article class="tarjeta naranja">
       <div class="ilustracion" aria-hidden="true">🎮</div>
       <div class="contenido-tarjeta">
@@ -469,15 +469,15 @@ footer p { margin: 0; }
   <p>♡　〰〰〰　Aprender también es una aventura. 💙</p>
 </footer>
 
-<aside class="bolita" id="bolita" aria-label="Bolita, tu compañera de aprendizaje">
-  <button class="bolita-cerrar" id="cerrarBolita" aria-label="Ocultar a Bolita">×</button>
-  <div class="bolita-mensaje" id="mensajeBolita" aria-live="polite">
-    <strong>¡Hola! Soy Bolita 💛</strong>
+<aside class="chispa-flotante" id="chispaFlotante" aria-label="Chispa, tu compañera de aprendizaje">
+  <button class="chispa-cerrar" id="cerrarChispa" aria-label="Ocultar a Chispa">×</button>
+  <div class="chispa-mensaje" id="mensajeChispa" aria-live="polite">
+    <strong>¡Hola! Soy Chispa 💛</strong>
     ¿Qué te gustaría descubrir hoy?
   </div>
 
-  <div class="bolita-dibujo" id="coneja" role="button" tabindex="0"
-       aria-label="Pulsa a Bolita para descubrir otro mensaje">
+  <div class="chispa-dibujo" id="coneja" role="button" tabindex="0"
+       aria-label="Pulsa a Chispa para descubrir otro mensaje">
     <div class="oreja izquierda"></div>
     <div class="oreja derecha"></div>
     <div class="cabeza">
@@ -497,32 +497,32 @@ footer p { margin: 0; }
 </aside>
 
 <script>
-const mensajesBolita = [
-  ["¡Hola! Soy Bolita 💛", "¿Qué te gustaría descubrir hoy?"],
+const mensajesChispa = [
+  ["¡Hola! Soy Chispa 💛", "¿Qué te gustaría descubrir hoy?"],
   ["¡Tú puedes! ✨", "Cada pequeño paso cuenta."],
   ["¡Vamos a jugar! 🎮", "Aprender puede ser muy divertido."],
   ["¡No tengas miedo! 🌷", "Equivocarse también es aprender."],
   ["¡Sigue explorando! ⭐", "Tu curiosidad es tu superpoder."]
 ];
 
-let indiceBolita = 0;
+let indiceChispa = 0;
 
-function cambiarMensajeBolita() {
-  indiceBolita = (indiceBolita + 1) % mensajesBolita.length;
-  document.getElementById("mensajeBolita").innerHTML =
-    "<strong>" + mensajesBolita[indiceBolita][0] + "</strong>" +
-    mensajesBolita[indiceBolita][1];
+function cambiarMensajeChispa() {
+  indiceChispa = (indiceChispa + 1) % mensajesChispa.length;
+  document.getElementById("mensajeChispa").innerHTML =
+    "<strong>" + mensajesChispa[indiceChispa][0] + "</strong>" +
+    mensajesChispa[indiceChispa][1];
 }
 
-document.getElementById("coneja").addEventListener("click", cambiarMensajeBolita);
+document.getElementById("coneja").addEventListener("click", cambiarMensajeChispa);
 document.getElementById("coneja").addEventListener("keydown", function(event) {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
-    cambiarMensajeBolita();
+    cambiarMensajeChispa();
   }
 });
-document.getElementById("cerrarBolita").addEventListener("click", function() {
-  document.getElementById("bolita").hidden = true;
+document.getElementById("cerrarChispa").addEventListener("click", function() {
+  document.getElementById("chispaFlotante").hidden = true;
 });
 </script>
 </body>
