@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actividades Interactivas - Chispa Education</title>
+<meta name="description" content="Juegos, cuentos y pequeños desafíos para aprender mientras te diviertes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --azul: #0878d1;
+  --azul-oscuro: #064b9b;
+  --texto: #4d6688;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--texto);
+  background: #f7fbff;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.55;
+}
+
+/* CABECERA */
+.cabecera {
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+  padding: 38px 18px 52px;
+  text-align: center;
+  color: white;
+  background:
+    radial-gradient(ellipse at 15% 10%, #8bd1ff 0%, transparent 34%),
+    radial-gradient(ellipse at 85% 80%, #4b9ce9 0%, transparent 42%),
+    linear-gradient(135deg, #54b5f7, #1674d0);
+}
+.onda {
+  position: absolute;
+  inset: auto -5% -1px;
+  width: 110%;
+  height: 75px;
+  pointer-events: none;
+}
+.marca {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 4px 20px;
+  color: var(--azul-oscuro);
+  background: #ffffffeb;
+  border: 5px solid white;
+  border-radius: 28px;
+  box-shadow: 0 7px 0 #ffffff35;
+  transform: rotate(-1deg);
+}
+.marca h1 {
+  margin: 0;
+  font: 700 clamp(2.3rem, 6vw, 4.5rem)/1.1 'Fredoka', sans-serif;
+  letter-spacing: -1.5px;
+}
+.marca .education { color: #ff9c35; }
+.eslogan {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 14px 0 0;
+  padding: 7px 22px;
+  border-radius: 25px;
+  background: #ffffffd9;
+  color: var(--azul-oscuro);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-weight: 800;
+}
+.estrella {
+  position: absolute;
+  z-index: 1;
+  color: #ffbd45;
+  font-size: 2.6rem;
+  text-shadow: 0 3px 0 white;
+}
+.estrella.uno { left: 15%; top: 32px; }
+.estrella.dos { right: 16%; top: 45px; }
+.estrella.tres { right: 24%; top: 125px; font-size: 1.7rem; }
+
+/* CONTENIDO */
+main {
+  width: min(1000px, calc(100% - 42px));
+  margin: 30px auto 0;
+  position: relative;
+}
+.seccion-interna {
+  background: linear-gradient(135deg, #fff0d9, #fff5e8);
+  padding: 35px 30px;
+  border-radius: 27px;
+  box-shadow: 0 7px 18px #284c7314;
+  margin-bottom: 30px;
+}
+.seccion-interna h2 {
+  color: var(--azul-oscuro);
+  font: 600 clamp(1.8rem, 3.5vw, 2.5rem)/1.2 'Fredoka', sans-serif;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.rayita {
+  width: 100px;
+  height: 6px;
+  margin: -5px 0 20px;
+  border-radius: 10px;
+  background: #ffb77c;
+}
+.seccion-interna p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+.boton-volver {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: white;
+  font-weight: 800;
+  text-decoration: none;
+  background: linear-gradient(90deg, #ff641a, #ff510d);
+  box-shadow: 0 5px 10px #30445c12;
+  transition: transform .2s, filter .2s;
+}
+.boton-volver:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+/* PIE */
+footer {
+  position: relative;
+  overflow: hidden;
+  margin-top: 45px;
+  padding: 45px 20px 55px;
+  text-align: center;
+  color: var(--azul-oscuro);
+  background: linear-gradient(#d3eaff, #b6ddff);
+  font-weight: 800;
+}
+footer p { margin: 0; }
+
+/* MASCOTA (CHISPA) */
+.chispa-flotante {
+  position: fixed;
+  z-index: 10;
+  right: 8px;
+  bottom: -5px;
+  width: 225px;
+  text-align: center;
+  animation: aparece 1s ease-out both;
+}
+@keyframes aparece {
+  from { transform: translateY(180px); }
+  to { transform: translateY(0); }
+}
+.chispa-mensaje {
+  position: relative;
+  z-index: 3;
+  margin: 0 0 -3px;
+  padding: 14px 16px;
+  border: 3px solid #d9eaff;
+  border-radius: 50% 50% 42% 42%;
+  background: white;
+  color: #0754a6;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.35;
+  box-shadow: 0 5px 16px #235c9b20;
+}
+.chispa-mensaje strong {
+  display: block;
+  font-size: 1.15rem;
+  margin-bottom: 5px;
+}
+.chispa-mensaje::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  right: 35px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-right: 3px solid #d9eaff;
+  border-bottom: 3px solid #d9eaff;
+  transform: rotate(45deg);
+}
+.chispa-dibujo {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+  cursor: pointer;
+  animation: respira 3s ease-in-out infinite;
+}
+@keyframes respira {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.oreja {
+  position: absolute;
+  top: 0;
+  width: 57px;
+  height: 135px;
+  border-radius: 55% 55% 45% 45%;
+  background: linear-gradient(90deg, #d4b28d, #fff0d9 48%, #d7b998);
+  box-shadow: inset 2px 0 5px #fff9ed;
+}
+.oreja::after {
+  content: "";
+  position: absolute;
+  inset: 14px 12px 17px;
+  border-radius: inherit;
+  background: linear-gradient(#f4bdc9, #f8dce1);
+}
+.oreja.izquierda { left: 38px; transform: rotate(-26deg); }
+.oreja.derecha { right: 38px; transform: rotate(25deg); }
+
+.cabeza {
+  position: absolute;
+  z-index: 1;
+  top: 55px;
+  left: 22px;
+  width: 176px;
+  height: 153px;
+  border-radius: 49% 49% 43% 43%;
+  background: radial-gradient(ellipse at 34% 25%, #fff8eb, #f4dfc5 55%, #d6b38e);
+  box-shadow: inset -7px -9px 14px #b28b6630, inset 5px 6px 12px #fff9ee;
+}
+.ojo {
+  position: absolute;
+  top: 67px;
+  width: 16px;
+  height: 21px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, white 0 10%, #67452e 12% 35%, #39251c 70%);
+  box-shadow: 0 2px 2px #76523840;
+}
+.ojo.izquierda { left: 45px; }
+.ojo.derecha { right: 45px; }
+.meji {
+  position: absolute;
+  top: 91px;
+  width: 28px;
+  height: 16px;
+  border-radius: 50%;
+  background: #eeaaa9a0;
+  filter: blur(3px);
+}
+.meji.izquierda { left: 17px; }
+.meji.derecha { right: 17px; }
+
+.hocico {
+  position: absolute;
+  top: 91px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff7ec;
+}
+.nariz {
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e88f9b;
+}
+.boca {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 5px;
+  background: #89634f;
+}
+.sonrisa {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 8px;
+  border-bottom: 2px solid #89634f;
+  border-radius: 0 0 50% 50%;
+}
+
+.patita {
+  position: absolute;
+  z-index: 2;
+  top: 188px;
+  width: 65px;
+  height: 34px;
+  border-radius: 50% 50% 35% 35%;
+  background: linear-gradient(#fff0dc, #dfc5a6);
+  box-shadow: inset 0 4px 5px #fff9ed;
+}
+.patita.izquierda { left: 38px; transform: rotate(-9deg); }
+.patita.derecha { right: 38px; transform: rotate(9deg); }
+.chispa-cerrar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  border: none;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  background: #e9f5ff;
+  color: #0754a6;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .cabecera { min-height: 220px; padding-top: 35px; }
+  .marca { padding: 8px 12px; }
+  .marca h1 { font-size: 2.25rem; }
+  main { width: calc(100% - 24px); }
+  .seccion-interna { padding: 25px 18px; }
+  .chispa-flotante { width: 155px; right: 0; }
+  .chispa-dibujo { transform: scale(.76); transform-origin: bottom center; margin-top: -18px; }
+  .chispa-mensaje { font-size: 12px; padding: 10px; }
+  .chispa-mensaje strong { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<header class="cabecera">
+  <span class="estrella uno">✦</span>
+  <span class="estrella dos">★</span>
+  <span class="estrella tres">✧</span>
+  <div class="marca">
+    <h1>Chispa <span class="education">Education</span></h1>
+  </div>
+  <p class="eslogan">¡Enciende tu chispa y aprende jugando!</p>
+  <svg class="onda" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,42 C180,100 270,0 460,45 S780,92 970,42 S1240,0 1440,43 L1440,100 L0,100Z" fill="#d9efff" opacity=".85"/>
+    <path d="M0,65 C210,15 330,100 520,55 S860,20 1050,65 S1280,100 1440,48 L1440,100 L0,100Z" fill="#f7fbff"/>
+  </svg>
+</header>
+
+<main>
+  <section class="seccion-interna">
+    <h2><span>🎮</span> Actividades interactivas</h2>
+    <div class="rayita"></div>
+    <p>¡Bienvenido a la sección de juegos y desafíos! Aquí encontrarás dinámicas divertidas para poner a prueba tu ingenio, resolver acertijos y aprender jugando.</p>
+    <p><em>Pronto añadiremos más juegos interactivos por aquí. ¡Mantente atento!</em></p>
+    <a class="boton-volver" href="index.html">⬅ Volver al inicio</a>
+  </section>
+</main>
+
+<footer>
+  <p>♡ 〰〰〰 Aprender también es una aventura. 💙</p>
+</footer>
+
+<aside class="chispa-flotante" id="chispaFlotante" aria-label="Chispa, tu compañera de aprendizaje">
+  <button class="chispa-cerrar" id="cerrarChispa" aria-label="Ocultar a Chispa">×</button>
+  <div class="chispa-mensaje" id="mensajeChispa" aria-live="polite">
+    <strong>¡Hola! Soy Chispa 💛</strong>
+    ¡A jugar y aprender se ha dicho!
+  </div>
+
+  <div class="chispa-dibujo" id="coneja" role="button" tabindex="0"
+       aria-label="Pulsa a Chispa para descubrir otro mensaje">
+    <div class="oreja izquierda"></div>
+    <div class="oreja derecha"></div>
+    <div class="cabeza">
+      <div class="ojo izquierda"></div>
+      <div class="ojo derecha"></div>
+      <div class="meji izquierda"></div>
+      <div class="meji derecha"></div>
+      <div class="hocico">
+        <div class="nariz"></div>
+        <div class="boca"></div>
+        <div class="sonrisa"></div>
+      </div>
+    </div>
+    <div class="patita izquierda"></div>
+    <div class="patita derecha"></div>
+  </div>
+</aside>
+
+<script>
+const mensajesChispa = [
+  ["¡A jugar! 🎮", "Elige tu juego favorito y diviértete."],
+  ["¡Qué gran nivel! ⭐", "Estás superando todos los retos."],
+  ["¡Prueba y acierta! 🚀", "Jugar es la mejor forma de aprender."]
+];
+
+let indiceChispa = 0;
+
+function cambiarMensajeChispa() {
+  indiceChispa = (indiceChispa + 1) % mensajesChispa.length;
+  document.getElementById("mensajeChispa").innerHTML =
+    "<strong>" + mensajesChispa[indiceChispa][0] + "</strong>" +
+    mensajesChispa[indiceChispa][1];
+}
+
+document.getElementById("coneja").addEventListener("click", cambiarMensajeChispa);
+document.getElementById("coneja").addEventListener("keydown", function(event) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    cambiarMensajeChispa();
+  }
+});
+document.getElementById("cerrarChispa").addEventListener("click", function() {
+  document.getElementById("chispaFlotante").hidden = true;
+});
+</script>
+</body>
+</html>
