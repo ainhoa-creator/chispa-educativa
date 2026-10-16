@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chispa Education ✨</title>
+<title>Chispa Education</title>
 <meta name="description" content="¡Enciende tu chispa y aprende jugando!">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,7 +88,7 @@ body {
 
 /* PRESENTACIÓN */
 main {
-  width: min(1360px, calc(100% - 42px));
+  width: min(1000px, calc(100% - 42px));
   margin: 30px auto 0;
   position: relative;
 }
@@ -124,11 +124,13 @@ main {
   font-weight: 800;
 }
 
-/* TARJETAS */
+/* TARJETAS (Modificado a 2 columnas) */
 .tarjetas {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 .tarjeta {
   min-width: 0;
@@ -147,7 +149,6 @@ main {
   box-shadow: 0 12px 25px #284c7320;
 }
 .tarjeta.naranja { background: linear-gradient(135deg, #fff0d9, #fff5e8); }
-.tarjeta.lila { background: linear-gradient(135deg, #f1e6ff, #f6edff); }
 .tarjeta.rosa { background: linear-gradient(135deg, #ffe2eb, #fff0f5); }
 
 .ilustracion {
@@ -160,7 +161,6 @@ main {
   transform: rotate(-5deg);
 }
 .tarjeta:nth-child(2) .ilustracion { transform: rotate(5deg); }
-.tarjeta:nth-child(3) .ilustracion { transform: rotate(-4deg); }
 .tarjeta h3 {
   margin: 0 0 12px;
   color: var(--azul-oscuro);
@@ -184,7 +184,6 @@ main {
 }
 .boton:hover { transform: translateY(-2px); filter: brightness(1.05); }
 .naranja .boton { background: linear-gradient(90deg, #ff641a, #ff510d); }
-.lila .boton { background: linear-gradient(90deg, #b16cde, #9856ca); }
 .rosa .boton { background: linear-gradient(90deg, #f53882, #f51d70); }
 
 /* PIE */
@@ -310,7 +309,6 @@ footer p { margin: 0; }
 .meji.izquierda { left: 17px; }
 .meji.derecha { right: 17px; }
 
-/* HOCICO Y BOCA ARREGLADOS */
 .hocico {
   position: absolute;
   top: 91px;
@@ -379,7 +377,7 @@ footer p { margin: 0; }
 }
 
 @media (max-width: 900px) {
-  .tarjetas { grid-template-columns: 1fr; }
+  .tarjetas { grid-template-columns: 1fr; max-width: 500px; }
   .tarjeta { min-height: 235px; grid-template-columns: 35% 65%; }
   .ilustracion { font-size: 5rem; }
   .tarjeta h3 { font-size: 1.7rem; }
@@ -431,7 +429,7 @@ footer p { margin: 0; }
   <section class="presentacion">
     <h2>¿Qué es Chispa Education?</h2>
     <div class="rayita"></div>
-    <p>Chispa Education es un espacio para aprender de forma divertida, despertar la curiosidad y dejar volar la imaginación. Aquí encontrarás juegos interactivos, fichas para imprimir y retos de informática para aprender a tu ritmo.</p>
+    <p>Chispa Education es un espacio para aprender de forma divertida, despertar la curiosidad y dejar volar la imaginación. Aquí encontrarás juegos interactivos y retos de informática para aprender a tu ritmo.</p>
     <p class="frase">¡Cada actividad es una nueva oportunidad para descubrir!</p>
   </section>
 
@@ -442,15 +440,6 @@ footer p { margin: 0; }
         <h3>Actividades interactivas</h3>
         <p>Juegos, cuentos y pequeños desafíos para aprender mientras te diviertes.</p>
         <a class="boton" href="actividades/index.html">Explorar actividades ➜</a>
-      </div>
-    </article>
-
-    <article class="tarjeta lila">
-      <div class="ilustracion" aria-hidden="true">📝</div>
-      <div class="contenido-tarjeta">
-        <h3>Fichas para descargar</h3>
-        <p>Actividades imprimibles para practicar, dibujar y desarrollar la creatividad.</p>
-        <a class="boton" href="fichas/index.html">Ver las fichas ➜</a>
       </div>
     </article>
 
@@ -466,7 +455,7 @@ footer p { margin: 0; }
 </main>
 
 <footer>
-  <p>♡　〰〰〰　Aprender también es una aventura. 💙</p>
+  <p>♡ 〰〰〰 Aprender también es una aventura. 💙</p>
 </footer>
 
 <aside class="chispa-flotante" id="chispaFlotante" aria-label="Chispa, tu compañera de aprendizaje">
